@@ -13,7 +13,7 @@ def extract_sentences_from_files(files):
     return sentences
 
 
-def extract_entities(sentence):
+def extract_entities(sentence, post=False):
     """Extract entities from a sentence
 
     a sentence should be a list of tuples like this
@@ -38,7 +38,11 @@ def extract_entities(sentence):
     entity_sofar = []
     type_sofar = None
     tokens = []
-    for token, ner_tag, _ in sentence:
+    for s in sentence:
+        if not post:
+            token, ner_tag, _ = s
+        else:
+            token, ner_tag = s
         tokens.append(token)
         if ner_tag[0] == 'B':
             if type_sofar is not None:
