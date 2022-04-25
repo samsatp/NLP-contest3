@@ -2,7 +2,7 @@ def get_sequence(file):
     """
         preprocess a tokenized file into list of list
     """
-    with open(file, "r") as f:
+    with open(file, "r",encoding="utf8") as f:
         seqs = []
         row = []
         for line in f.readlines():
